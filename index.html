@@ -85,6 +85,11 @@
       [data-page][hidden] {
         display: none !important;
       }
+
+      /* Hide modals without breaking accessibility */
+      [data-modal][hidden] {
+        display: none !important;
+      }
     </style>
   </head>
 
@@ -275,6 +280,52 @@
       </li>
     </template>
 
+    <!-- Claudy! modal -->
+    <div id="claudy-modal" data-modal hidden class="fixed inset-0 z-[60] flex items-center justify-center p-4">
+      <div id="claudy-modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+      <div class="relative w-full max-w-sm rounded-2xl border border-white/10 bg-brandBlack/95 p-6 text-center shadow-glass">
+        <button
+          id="claudy-modal-close"
+          class="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/10 transition"
+          aria-label="Close"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-2xl font-extrabold">
+          C!
+        </div>
+        <h3 class="text-lg font-semibold">Claudy!</h3>
+        <p class="mt-2 text-sm text-white/70">Claude.ai, restyled: themes, fonts, sounds.</p>
+
+        <div class="mt-6 flex flex-col gap-3">
+          <button disabled class="flex w-full cursor-not-allowed items-center gap-3 rounded-xl bg-white/10 px-4 py-2 text-left text-white/40">
+            <i class="fa-brands fa-chrome text-xl"></i>
+            <span class="min-w-0">
+              <span class="block text-sm font-semibold">Add to Chrome</span>
+              <span class="block text-xs">Under review by Google Admins</span>
+            </span>
+          </button>
+          <button disabled class="flex w-full cursor-not-allowed items-center gap-3 rounded-xl bg-white/10 px-4 py-2 text-left text-white/40">
+            <i class="fa-brands fa-firefox-browser text-xl"></i>
+            <span class="min-w-0">
+              <span class="block text-sm font-semibold">Add to Firefox</span>
+              <span class="block text-xs">Under review by Mozilla Admins</span>
+            </span>
+          </button>
+        </div>
+
+        <a
+          href="https://github.com/tommfr38/claudy"
+          target="_blank"
+          rel="noreferrer"
+          class="mt-4 inline-block text-xs text-white/60 underline underline-offset-2 hover:text-white"
+        >
+          Show source code
+        </a>
+      </div>
+    </div>
+
     <script>
       // Simple 2-page routing via hash (#about / #projects)
       const pageAbout = document.getElementById('page-about');
@@ -319,6 +370,13 @@
           u: 'https://tommfr38.github.io/relocate/',
           i: 'fa-solid fa-location-dot',
           d: "Change your phone's GPS location with an ease"
+        },
+        {
+          t: 'Claudy!',
+          u: '#',
+          iconText: 'C!',
+          d: 'Claude.ai, restyled: themes, fonts, sounds.',
+          popup: true
         },
         {
           t: 'QuikWeb',
@@ -560,6 +618,20 @@
       const tpl = document.getElementById('card-tpl');
       const updated = document.getElementById('updated');
 
+      // Claudy! modal
+      const claudyModal = document.getElementById('claudy-modal');
+      const claudyModalClose = document.getElementById('claudy-modal-close');
+      const claudyModalBackdrop = document.getElementById('claudy-modal-backdrop');
+
+      function openClaudyModal() {
+        claudyModal.hidden = false;
+      }
+      function closeClaudyModal() {
+        claudyModal.hidden = true;
+      }
+      claudyModalClose.addEventListener('click', closeClaudyModal);
+      claudyModalBackdrop.addEventListener('click', closeClaudyModal);
+
       function makeCard(p) {
         const node = tpl.content.firstElementChild.cloneNode(true);
         const a = node.querySelector('a');
@@ -567,11 +639,25 @@
         a.title = p.t;
 
         const icon = node.querySelector('[data-icon]');
-        icon.className = `${p.i}`.includes('fa-brands') ? p.i : `fa-solid ${p.i}`;
+        if (p.iconText) {
+          icon.className = 'text-lg font-extrabold not-italic';
+          icon.textContent = p.iconText;
+        } else {
+          icon.className = `${p.i}`.includes('fa-brands') ? p.i : `fa-solid ${p.i}`;
+        }
 
         node.querySelector('[data-title]').textContent = p.t;
         const desc = node.querySelector('[data-desc]');
         if (desc && p.d) desc.textContent = p.d;
+
+        if (p.popup) {
+          a.removeAttribute('target');
+          a.removeAttribute('rel');
+          a.addEventListener('click', (e) => {
+            e.preventDefault();
+            openClaudyModal();
+          });
+        }
 
         return node;
       }

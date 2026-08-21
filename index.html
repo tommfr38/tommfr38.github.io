@@ -280,7 +280,46 @@
       </li>
     </template>
 
-    <!-- Claudy! modal -->
+    <!-- MC MOD modal -->
+    <div id="mcmod-modal" data-modal hidden class="fixed inset-0 z-[60] flex items-center justify-center p-4">
+      <div id="mcmod-modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+      <div class="relative w-full max-w-sm rounded-2xl border border-white/10 bg-brandBlack/95 p-6 text-center shadow-glass">
+        <button
+          id="mcmod-modal-close"
+          class="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/10 transition"
+          aria-label="Close"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-2xl font-extrabold">
+          MC
+        </div>
+        <h3 class="text-lg font-semibold">Minecraft Mods</h3>
+        <p class="mt-2 text-sm text-white/70">My minecraft mods!</p>
+
+        <div class="mt-6 flex flex-col gap-3">
+          <a
+            href="https://github.com/tommfr38/ZenithMod/"
+            target="_blank"
+            rel="noreferrer"
+            class="flex w-full items-center gap-3 rounded-xl bg-white/10 px-4 py-2 text-left text-white transition hover:bg-white/20"
+          >
+            <span class="min-w-0 text-sm font-semibold">Zenith Mod</span>
+          </a>
+          <a
+            href="https://github.com/tommfr38/TwilightForestFinalBoss"
+            target="_blank"
+            rel="noreferrer"
+            class="flex w-full items-center gap-3 rounded-xl bg-white/10 px-4 py-2 text-left text-white transition hover:bg-white/20"
+          >
+            <span class="min-w-0 text-sm font-semibold">Twilight Forest Boss(ALL RIGHTS 2 @D_ANGRY_MODDER)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+        <!-- Claudy! modal -->
     <div id="claudy-modal" data-modal hidden class="fixed inset-0 z-[60] flex items-center justify-center p-4">
       <div id="claudy-modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
       <div class="relative w-full max-w-sm rounded-2xl border border-white/10 bg-brandBlack/95 p-6 text-center shadow-glass">
@@ -380,7 +419,14 @@
           u: '#',
           iconText: 'C!',
           d: 'Claude.ai, restyled: themes, fonts, sounds.',
-          popup: true
+          popup: 'claudy'
+        },
+        {
+          t: 'MC MODS',
+          u: '#',
+          iconText: 'MC',
+          d: 'A collection of my minecraft mods.',
+          popup: 'mcmod'
         },
         {
           t: 'QuikWeb',
@@ -622,19 +668,26 @@
       const tpl = document.getElementById('card-tpl');
       const updated = document.getElementById('updated');
 
-      // Claudy! modal
-      const claudyModal = document.getElementById('claudy-modal');
-      const claudyModalClose = document.getElementById('claudy-modal-close');
-      const claudyModalBackdrop = document.getElementById('claudy-modal-backdrop');
+      // Popup modals (Claudy!, MC MODS)
+      const modals = {
+        claudy: document.getElementById('claudy-modal'),
+        mcmod: document.getElementById('mcmod-modal'),
+      };
 
-      function openClaudyModal() {
-        claudyModal.hidden = false;
+      function openModal(key) {
+        const modal = modals[key];
+        if (modal) modal.hidden = false;
       }
-      function closeClaudyModal() {
-        claudyModal.hidden = true;
+      function closeModal(key) {
+        const modal = modals[key];
+        if (modal) modal.hidden = true;
       }
-      claudyModalClose.addEventListener('click', closeClaudyModal);
-      claudyModalBackdrop.addEventListener('click', closeClaudyModal);
+
+      Object.entries(modals).forEach(([key, modal]) => {
+        if (!modal) return;
+        modal.querySelector('[id$="-modal-close"]')?.addEventListener('click', () => closeModal(key));
+        modal.querySelector('[id$="-modal-backdrop"]')?.addEventListener('click', () => closeModal(key));
+      });
 
       function makeCard(p) {
         const node = tpl.content.firstElementChild.cloneNode(true);
@@ -659,7 +712,7 @@
           a.removeAttribute('rel');
           a.addEventListener('click', (e) => {
             e.preventDefault();
-            openClaudyModal();
+            openModal(p.popup);
           });
         }
 

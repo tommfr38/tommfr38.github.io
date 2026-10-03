@@ -7,12 +7,13 @@ const projects = [
   {
     t: 'card2.0',
     c: 'tools',
-    d: 'Custom Apple Wallet card art and lock screen passcode themes for macOS. Based on AirCard by mak5er.',
+    d: 'Custom Apple Wallet card art and lock screen passcode themes, from your Mac.',
     links: [
       { t: 'install', u: 'https://tommfr38.com/card2.0/' },
       { t: 'source', u: 'https://github.com/tommfr38/card2.0' },
     ],
   },
+  { t: 'Games Library', c: 'games', u: 'https://tommfr38.com/gameslibrary/', d: 'A library of minigames: Wordle, Tetris, Snake, 2048 and more.' },
   {
     t: 'MC Mods',
     c: 'mods',

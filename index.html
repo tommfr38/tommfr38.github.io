@@ -1,756 +1,166 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Tomm's Site</title>
-    <meta name="description" content="Tomm's personal site — about me and my coding projects." />
-
-    <!-- Canonical / basic SEO -->
-    <link rel="canonical" href="https://tommfr38.github.io/" />
+    <meta name="description" content="Tomm's personal site: about me and my coding projects." />
+    <link rel="canonical" href="https://tommfr38.com/" />
     <meta name="robots" content="index,follow" />
 
-    <!-- Open Graph -->
     <meta property="og:title" content="Tomm · About & Projects" />
     <meta property="og:description" content="About me and my little coding projects." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://tommfr38.github.io/" />
-    <meta property="og:image" content="/tommlogo-big.png" />
-
-    <!-- Twitter -->
+    <meta property="og:url" content="https://tommfr38.com/" />
+    <meta property="og:image" content="https://tommfr38.com/tommlogo-big.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Tomm · About & Projects" />
     <meta name="twitter:description" content="About me and my little coding projects." />
-    <meta name="twitter:image" content="/tommlogo-big.png" />
+    <meta name="twitter:image" content="https://tommfr38.com/tommlogo-big.png" />
 
-    <!-- Theme color -->
-    <meta name="theme-color" content="#050607" media="(prefers-color-scheme: dark)" />
-    <meta name="theme-color" content="#063a2b" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-    <!-- Icons -->
-    <link rel="icon" type="image/png" href="/tommlogo-mini.png" />
-    <link rel="apple-touch-icon" href="/tommlogo-mini.png" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: { sans: ['Poppins', 'ui-sans-serif', 'system-ui'] },
-            colors: {
-              brandBlack: '#050607',
-              brandGreen: '#063a2b',
-              accent: '#f5c400',
-            },
-            boxShadow: {
-              glass: '0 24px 70px -45px rgb(0 0 0 / 0.85)',
-            },
-          },
-        },
-      }
-    </script>
-
-    <style>
-      @keyframes fade-in-up {
-        from {
-          opacity: 0;
-          transform: translateY(10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .fade-in-up {
-        animation: fade-in-up 0.7s ease-out both;
-      }
-
-      .fade-in-up-delay {
-        animation: fade-in-up 0.9s ease-out both;
-      }
-
-      /* Hide pages without breaking accessibility */
-      [data-page][hidden] {
-        display: none !important;
-      }
-
-      /* Hide modals without breaking accessibility */
-      [data-modal][hidden] {
-        display: none !important;
-      }
-    </style>
+    <link rel="stylesheet" href="/style.css" />
   </head>
 
-  <body class="min-h-screen text-white flex flex-col">
-    <!-- Background (black -> dark green) -->
-    <div class="fixed inset-0 -z-10 bg-gradient-to-br from-brandBlack via-black to-brandGreen"></div>
-    <div class="fixed inset-0 -z-10 opacity-35 bg-[radial-gradient(circle_at_20%_10%,rgba(255,255,255,0.10),transparent_45%),radial-gradient(circle_at_80%_30%,rgba(34,197,94,0.10),transparent_40%),radial-gradient(circle_at_30%_90%,rgba(34,197,94,0.10),transparent_40%)]"></div>
+  <body>
+    <a class="skip" href="#about">Skip to content</a>
 
-    <!-- Top menu -->
-    <header class="sticky top-0 z-50 backdrop-blur-md bg-black/25 border-b border-white/10">
-      <nav class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <!-- Left: logo -->
-        <a href="#about" class="flex items-center gap-3" aria-label="Go to About">
-          <img
-            src="/tommlogo-mini.png"
-            alt="Tomm logo"
-            class="h-9 w-9 rounded-xl"
-            loading="eager"
-          />
-          <span class="hidden sm:inline-block text-sm font-semibold tracking-wide text-white/80">Tomm</span>
-        </a>
-
-        <!-- Middle: menu links -->
-        <div class="flex items-center justify-center gap-6 text-sm font-semibold">
-          <a
-            id="nav-about"
-            href="#about"
-            class="relative text-white/80 hover:text-white transition-colors"
-            aria-current="page"
-          >
-            About me
-          </a>
-          <a
-            id="nav-projects"
-            href="#projects"
-            class="relative text-white/80 hover:text-white transition-colors"
-          >
-            Projects
-          </a>
-        </div>
-
-        <!-- Right spacer to keep middle centered -->
-        <div class="w-[92px] sm:w-[130px]"></div>
-      </nav>
+    <header class="top">
+      <div class="wrap bar">
+        <a class="brand" href="#top" aria-label="tomm, top of page"><img class="logo" src="/favicon-192.png" alt="" width="28" height="28" />~/tomm</a>
+        <nav aria-label="Sections">
+          <a href="#about" data-spy="about">about</a>
+          <a href="#projects" data-spy="projects">projects</a>
+          <a href="#links" data-spy="links">links</a>
+        </nav>
+        <a class="mail" href="mailto:tomm@tommfr38.com">tomm@tommfr38.com</a>
+      </div>
     </header>
 
-    <div id="pages" class="flex-1">
-    <!-- ABOUT PAGE -->
-    <main data-page id="page-about" class="fade-in-up">
-      <section class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-12">
-        <div class="flex flex-col items-center text-center">
-          <!-- PFP placeholder -->
-          <div class="relative">
-            <div class="absolute -inset-6 rounded-full bg-white/10 blur-2xl"></div>
-            <img
-              src="/BenjiSoniapfp.png"
-              alt="Profile picture"
-              class="relative h-32 w-32 sm:h-36 sm:w-36 rounded-full object-cover border border-white/15 shadow-glass"
-            />
+    <main id="top">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="wrap hero-grid">
+          <div>
+            <p class="tags"><span class="tag">&#9632; beginner programmer</span><span class="dim">/ <span data-count>45</span> projects</span></p>
+            <p class="dim prompt">hello, world &mdash; i'm</p>
+            <h1>tomm<span class="dot">.</span></h1>
+            <p class="dim aka">aka tommfr38</p>
+            <p class="lead">I play around with different projects and simple programs: small web tools, games, and the odd Mac app.</p>
+            <p class="actions">
+              <a class="btn solid" href="#projects">view projects &#8600;</a>
+              <a class="btn" href="mailto:tomm@tommfr38.com">email me</a>
+              <a class="btn" href="https://github.com/tommfr38" target="_blank" rel="noreferrer">github &#8599;</a>
+            </p>
           </div>
 
-          <!-- Name -->
-          <h1 class="mt-6 text-5xl sm:text-6xl font-extrabold tracking-tight text-white drop-shadow">
-            Tomm
-          </h1>
+          <div class="window" aria-hidden="true">
+            <div class="window-bar">
+              <span class="lights"><i></i><i></i><i></i></span>
+              <span>tomm@tommfr38.com: ~</span>
+              <span class="dim">v1.0</span>
+            </div>
+            <div class="window-body">
+              <p><span class="arrow">&rarr;</span> ~ ls projects/ | head -5</p>
+              <ul id="peek"></ul>
+              <p><span class="arrow">&rarr;</span> ~ ls projects/ | wc -l</p>
+              <p data-count>45</p>
+              <p><span class="arrow">&rarr;</span> ~ <span class="cursor"></span></p>
+            </div>
+            <div class="window-foot">// exit code 0 &middot; ttys000 &middot; zsh</div>
+          </div>
+        </div>
+      </section>
 
-          <!-- Description (kept from your existing code) -->
-          <p class="mt-5 max-w-2xl text-base sm:text-lg text-white/85 leading-relaxed">
-            I am Tomm a beginner programmer. I enjoy playing around
-            with different projects and simple programs.
-            For any inqueries, send an email to tomm@tommfr38.com
-          </p>
+      <!-- ABOUT -->
+      <section id="about" class="section" aria-labelledby="about-h">
+        <div class="wrap">
+          <div class="sec-head">
+            <span class="idx">// 01</span><span class="rule"></span><span class="cmdline">$ cat about.md</span>
+          </div>
+          <h2 id="about-h"><span class="hash">#</span> about</h2>
 
-          <!-- Social links (real links, open in new tab) -->
-          <div class="mt-10">
-            <div class="flex items-center justify-center gap-8 text-4xl sm:text-5xl">
-              <a
-                href="https://tiktok.com/@tommfr38"
-                target="_blank"
-                rel="noreferrer"
-                class="text-white/75 hover:text-white transition-colors"
-                aria-label="TikTok"
-              >
-                <i class="fa-brands fa-tiktok"></i>
-              </a>
-              <a
-                href="https://www.instagram.com/tommfr_38/"
-                target="_blank"
-                rel="noreferrer"
-                class="text-white/75 hover:text-white transition-colors"
-                aria-label="Instagram"
-              >
-                <i class="fa-brands fa-instagram"></i>
-              </a>
-              <a
-                href="https://x.com/tommfr38"
-                target="_blank"
-                rel="noreferrer"
-                class="text-white/75 hover:text-white transition-colors"
-                aria-label="X"
-              >
-                <i class="fa-brands fa-x-twitter"></i>
-              </a>
-              <a
-                href="https://discord.com/users/936649721055948850"
-                target="_blank"
-                rel="noreferrer"
-                class="text-white/75 hover:text-white transition-colors"
-                aria-label="Discord"
-              >
-                <i class="fa-brands fa-discord"></i>
-              </a>
-              <a
-                href="https://github.com/tommfr38"
-                target="_blank"
-                rel="noreferrer"
-                class="text-white/75 hover:text-white transition-colors"
-                aria-label="GitHub"
-              >
-                <i class="fa-brands fa-github"></i>
-              </a>
+          <div class="about-grid">
+            <div class="prose">
+              <p>I'm <strong>Tomm</strong>, a beginner programmer. I enjoy playing around with different projects and simple programs.</p>
+              <p>Most of what I make ends up here: calculators, timers, games, Discord helpers, and whatever else I felt like building that week.</p>
+              <p>For any inquiries, email <a href="mailto:tomm@tommfr38.com">tomm@tommfr38.com</a>.</p>
+            </div>
+
+            <div class="panel">
+              <div class="panel-head"><span>~/PROFILE.CFG</span><span class="dim">5 entries</span></div>
+              <div class="panel-pic">
+                <img src="/BenjiSoniapfp.png" alt="Two fluffy white cats curled up together on a brown blanket" width="96" height="96" />
+              </div>
+              <dl class="kv">
+                <dt>role</dt><dd>beginner programmer</dd>
+                <dt>focus</dt><dd>web tools &middot; games &middot; mods</dd>
+                <dt>projects</dt><dd><span data-count>45</span></dd>
+                <dt>site</dt><dd>tommfr38.com</dd>
+                <dt>mail</dt><dd>tomm@tommfr38.com</dd>
+              </dl>
             </div>
           </div>
         </div>
       </section>
-    </main>
 
-    <!-- PROJECTS PAGE -->
-    <main data-page id="page-projects" class="fade-in-up-delay" hidden>
-      <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
-        <div class="text-center mb-8">
-          <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight">Projects</h2>
-          <p class="mt-3 text-white/75">
-            Click any card to open the project in a new tab.
-          </p>
+      <!-- PROJECTS -->
+      <section id="projects" class="section" aria-labelledby="projects-h">
+        <div class="wrap">
+          <div class="sec-head">
+            <span class="idx">// 02</span><span class="rule"></span><span class="cmdline">$ ls projects/</span>
+          </div>
+          <h2 id="projects-h"><span class="hash">#</span> projects</h2>
+
+          <div class="toolbar">
+            <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
+            <label class="grep"><span class="dim">grep</span>
+              <input id="filter" type="search" autocomplete="off" spellcheck="false" placeholder="type to filter" />
+            </label>
+          </div>
+          <p id="count" class="dim result" aria-live="polite"></p>
+
+          <ul id="list" class="cards"></ul>
         </div>
+      </section>
 
-        <ul id="grid" class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"></ul>
+      <!-- LINKS -->
+      <section id="links" class="section" aria-labelledby="links-h">
+        <div class="wrap">
+          <div class="sec-head">
+            <span class="idx">// 03</span><span class="rule"></span><span class="cmdline">$ cat ~/links.txt</span>
+          </div>
+          <h2 id="links-h"><span class="hash">#</span> links</h2>
 
-        <div class="mt-10 text-center text-xs text-white/55">
-          <span id="updated"></span>
+          <div class="panel links-panel">
+            <div class="panel-head"><span>~/LINKS</span><span class="dim">6 entries</span></div>
+            <ul class="rows">
+              <li><span class="k">mail</span><a href="mailto:tomm@tommfr38.com">tomm@tommfr38.com</a></li>
+              <li><span class="k">github</span><a href="https://github.com/tommfr38" target="_blank" rel="noreferrer">github.com/tommfr38</a></li>
+              <li><span class="k">x</span><a href="https://x.com/tommfr38" target="_blank" rel="noreferrer">x.com/tommfr38</a></li>
+              <li><span class="k">instagram</span><a href="https://www.instagram.com/tommfr_38/" target="_blank" rel="noreferrer">instagram.com/tommfr_38</a></li>
+              <li><span class="k">tiktok</span><a href="https://tiktok.com/@tommfr38" target="_blank" rel="noreferrer">tiktok.com/@tommfr38</a></li>
+              <li><span class="k">discord</span><a href="https://discord.com/users/936649721055948850" target="_blank" rel="noreferrer">discord.com/users/936649721055948850</a></li>
+            </ul>
+          </div>
         </div>
       </section>
     </main>
 
-    </div>
-    <!-- Footer -->
-    <footer class="border-t border-white/10 bg-black/15">
-      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 text-sm text-white/60 text-center">
-        Built with ❤️ by Tomm.
+    <footer>
+      <div class="wrap foot">
+        <span>// end of file</span>
+        <span>&copy; <span id="year">2026</span> tomm &middot; tommfr38.com</span>
       </div>
     </footer>
 
-    <!-- Card template -->
-    <template id="card-tpl">
-      <li class="group">
-        <a
-          class="relative block h-full rounded-2xl border border-white/10 bg-white/5 p-4 text-white shadow-glass overflow-hidden
-                 hover:bg-white/10 hover:border-white/20 transition"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <div class="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-white/10 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-          <div class="relative flex items-start gap-3">
-            <div class="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10 text-white">
-              <i class="fa-solid fa-circle-question text-lg" data-icon></i>
-            </div>
-            <div class="min-w-0">
-              <h3 class="truncate text-base font-semibold" data-title>Title</h3>
-              <p class="mt-1 text-xs text-white/70 line-clamp-2" data-desc>
-                Small web thing made by Tomm.
-              </p>
-            </div>
-          </div>
-
-          <div class="relative mt-4 flex items-center justify-between text-[11px] text-white/55">
-            <span class="inline-flex items-center gap-1">
-              <span class="h-1.5 w-1.5 rounded-full bg-emerald-400/80"></span>
-              <span>Open project</span>
-            </span>
-            <span class="inline-flex items-center gap-1 group-hover:translate-x-0.5 transition-transform">
-              <span>View</span>
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </span>
-          </div>
-        </a>
-      </li>
-    </template>
-
-    <!-- MC MOD modal -->
-    <div id="mcmod-modal" data-modal hidden class="fixed inset-0 z-[60] flex items-center justify-center p-4">
-      <div id="mcmod-modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-      <div class="relative w-full max-w-sm rounded-2xl border border-white/10 bg-brandBlack/95 p-6 text-center shadow-glass">
-        <button
-          id="mcmod-modal-close"
-          class="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/10 transition"
-          aria-label="Close"
-        >
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-
-        <div class="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-2xl font-extrabold">
-          MC
-        </div>
-        <h3 class="text-lg font-semibold">Minecraft Mods</h3>
-        <p class="mt-2 text-sm text-white/70">My minecraft mods!</p>
-
-        <div class="mt-6 flex flex-col gap-3">
-          <a
-            href="https://github.com/tommfr38/ZenithMod/"
-            target="_blank"
-            rel="noreferrer"
-            class="flex w-full items-center gap-3 rounded-xl bg-white/10 px-4 py-2 text-left text-white transition hover:bg-white/20"
-          >
-            <span class="min-w-0 text-sm font-semibold">Zenith Mod</span>
-          </a>
-          <a
-            href="https://github.com/tommfr38/TwilightForestFinalBoss"
-            target="_blank"
-            rel="noreferrer"
-            class="flex w-full items-center gap-3 rounded-xl bg-white/10 px-4 py-2 text-left text-white transition hover:bg-white/20"
-          >
-            <span class="min-w-0 text-sm font-semibold">Twilight Forest Boss<br />(ALL RIGHTS TO @D_ANGRY_MODDER)</span>
-          </a>
-        </div>
-      </div>
-    </div>
-
-        <!-- Claudy! modal -->
-    <div id="claudy-modal" data-modal hidden class="fixed inset-0 z-[60] flex items-center justify-center p-4">
-      <div id="claudy-modal-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
-      <div class="relative w-full max-w-sm rounded-2xl border border-white/10 bg-brandBlack/95 p-6 text-center shadow-glass">
-        <button
-          id="claudy-modal-close"
-          class="absolute right-3 top-3 inline-flex h-8 w-8 items-center justify-center rounded-full text-white/60 hover:text-white hover:bg-white/10 transition"
-          aria-label="Close"
-        >
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-
-        <div class="mx-auto mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/10 text-2xl font-extrabold">
-          C!
-        </div>
-        <h3 class="text-lg font-semibold">Claudy!</h3>
-        <p class="mt-2 text-sm text-white/70">Claude.ai, restyled: themes, fonts, sounds.</p>
-
-        <div class="mt-6 flex flex-col gap-3">
-          <a
-            href="https://chromewebstore.google.com/detail/claudy/kokbammglgbkcldldekhbknmmmkfemlp"
-            target="_blank"
-            rel="noreferrer"
-            class="flex w-full items-center gap-3 rounded-xl bg-white/10 px-4 py-2 text-left text-white transition hover:bg-white/20"
-          >
-            <i class="fa-brands fa-chrome text-xl"></i>
-            <span class="min-w-0 text-sm font-semibold">Add to Chrome</span>
-          </a>
-          <a
-            href="https://addons.mozilla.org/en-US/firefox/addon/claudy/"
-            target="_blank"
-            rel="noreferrer"
-            class="flex w-full items-center gap-3 rounded-xl bg-white/10 px-4 py-2 text-left text-white transition hover:bg-white/20"
-          >
-            <i class="fa-brands fa-firefox-browser text-xl"></i>
-            <span class="min-w-0 text-sm font-semibold">Add to Firefox</span>
-          </a>
-        </div>
-
-        <a
-          href="https://github.com/tommfr38/claudy"
-          target="_blank"
-          rel="noreferrer"
-          class="mt-4 inline-block text-xs text-white/60 underline underline-offset-2 hover:text-white"
-        >
-          Show source code
-        </a>
-      </div>
-    </div>
-
-    <script>
-      // Simple 2-page routing via hash (#about / #projects)
-      const pageAbout = document.getElementById('page-about');
-      const pageProjects = document.getElementById('page-projects');
-      const navAbout = document.getElementById('nav-about');
-      const navProjects = document.getElementById('nav-projects');
-
-      function setActive(which) {
-        const isAbout = which === 'about';
-        pageAbout.hidden = !isAbout;
-        pageProjects.hidden = isAbout;
-
-        navAbout.setAttribute('aria-current', isAbout ? 'page' : 'false');
-        navProjects.setAttribute('aria-current', !isAbout ? 'page' : 'false');
-
-        // small visual hint
-        navAbout.classList.toggle('text-white', isAbout);
-        navAbout.classList.toggle('text-white/80', !isAbout);
-        navProjects.classList.toggle('text-white', !isAbout);
-        navProjects.classList.toggle('text-white/80', isAbout);
-      }
-
-      function route() {
-        const h = (location.hash || '#about').toLowerCase();
-        if (h.includes('projects')) setActive('projects');
-        else setActive('about');
-      }
-
-      window.addEventListener('hashchange', route);
-      route();
-
-      // PROJECT DATA (unchanged)
-      const projects = [
-        {
-          t: 'NeverFap',
-          u: 'https://tommfr38.github.io/neverfap/',
-          i: 'fa-fire-flame-curved',
-          d: 'Stop gooning. Live healthier'
-        },
-        {
-          t: 'Relocate',
-          u: 'https://tommfr38.github.io/relocate/',
-          i: 'fa-solid fa-location-dot',
-          d: "Change your phone's GPS location with an ease"
-        },
-        {
-          t: 'Cutout',
-          u: 'https://tommfr38.github.io/cutout/',
-          i: 'fa-solid fa-scissors',
-          d: "Remove the background of any image."
-        },
-        {
-          t: 'Games Library',
-          u: 'https://tommfr38.com/gameslibrary/',
-          i: 'fa-solid fa-gamepad',
-          d: 'A library of minigames: Wordle, Tetris, Snake, 2048 and more.'
-        },
-        {
-          t: 'toexe',
-          u: 'https://tommfr38.com/toexe/',
-          i: 'fa-solid fa-spinner',
-          d: 'Turn a Mac .app into a Windows .exe (Electron and Java apps), from the terminal.'
-        },
-        {
-          t: 'Card 2.0',
-          u: 'https://tommfr38.com/card2.0',
-          i: 'fa-solid fa-credit-card',
-          d: 'Custom Apple Wallet card art and lock screen passcode themes, from your Mac.'
-        },
-        {
-          t: 'Claudy!',
-          u: '#',
-          iconText: 'C!',
-          d: 'Claude.ai, restyled: themes, fonts, sounds.',
-          popup: 'claudy'
-        },
-        {
-          t: 'MC MODS',
-          u: '#',
-          iconText: 'MC',
-          d: 'A collection of my minecraft mods.',
-          popup: 'mcmod'
-        },
-        {
-          t: 'QuikWeb',
-          u: 'https://tommfr38.github.io/QuikWeb/',
-          i: 'fa-solid fa-magnifying-glass',
-          d: 'Search the web, one shortcut away'
-        },
-        {
-          t: 'PropertyMP3',
-          u: 'https://tommfr38.github.io/PropertyMP3/',
-          i: 'fa-music',
-          d: 'Edit your song`s details with a clean UI.'
-        },
-        {
-          t: 'CaseSim',
-          u: 'https://tommfr38.github.io/CaseSim/',
-          i: 'fa-briefcase',
-          d: 'Simulate opening Counter-Strike cases without spending a penny'
-        },
-        {
-          t: 'TypeTest nano',
-          u: 'https://tommfr38.github.io/typetestnano/',
-          i: 'fa-regular fa-keyboard',
-          d: 'Test how fast and accurate your typing is.'
-        },
-        {
-          t: 'CleanTube',
-          u: 'https://tommfr38.github.io/cleantube/',
-          i: 'fa-brands fa-youtube',
-          d: 'Watch YouTube without Ads, cookies, and trackers.'
-        },
-        {
-          t: 'Siri VS EU',
-          u: 'https://tommfr38.github.io/sirivseu/',
-          i: 'fa-microphone',
-          d: 'Latest news on Siri AI release in the EU'
-        },
-        {
-          t: 'Christmas Countdown',
-          u: 'https://tommfr38.github.io/ChristmasEveCountdown/',
-          i: 'fa-gifts',
-          d: 'Countdown to Christmas Eve'
-        },
-        {
-          t: 'Mines',
-          u: 'https://tommfr38.github.io/mines/',
-          i: 'fa-bomb',
-          d: 'Play Mines without losing all your money'
-        },
-        {
-          t: 'Clock Countdown',
-          u: 'https://tommfr38.github.io/clockcountdown/',
-          i: 'fa-clock',
-          d: 'Set a timer'
-        },
-        {
-          t: 'Hangman',
-          u: 'https://tommfr38.github.io/hangman/',
-          i: 'fa-user-secret',
-          d: 'Hangman in your browser'
-        },
-        {
-          t: 'Text Analyzer',
-          u: 'https://tommfr38.github.io/textanalyzer/',
-          i: 'fa-file-lines',
-          d: 'Paste text to see word counts, character counts and more.'
-        },
-        {
-          t: 'Simple Calculator',
-          u: 'https://tommfr38.github.io/CalculatorSimple/',
-          i: 'fa-calculator',
-          d: 'Basic web calculator'
-        },
-        {
-          t: 'Status Switcher',
-          u: 'https://tommfr38.github.io/statusswitcher/',
-          i: 'fa-toggle-on',
-          d: 'Automate your discord status without hassle'
-        },
-        {
-          t: 'Click Me',
-          u: 'https://tommfr38.github.io/clickme/',
-          i: 'fa-mouse-pointer',
-          d: 'A dumb little button that reacts when you won’t stop clicking it.'
-        },
-        {
-          t: 'Text Planner',
-          u: 'https://tommfr38.github.io/textplanner/',
-          i: 'fa-calendar-days',
-          d: 'Plan text here to make sure you dont make a mistake'
-        },
-        {
-          t: 'Stopwatch',
-          u: 'https://tommfr38.github.io/stopwatch/',
-          i: 'fa-stopwatch',
-          d: 'Simple stopwatch'
-        },
-        {
-          t: 'YMDP',
-          u: 'https://tommfr38.github.io/YMDP/',
-          i: 'fa-pen',
-          d: 'Your Mini Draw Page'
-        },
-        {
-          t: 'Roll a Die',
-          u: 'https://tommfr38.github.io/rolladie/',
-          i: 'fa-dice',
-          d: 'Roll dice digitally'
-        },
-        {
-          t: 'TIDG',
-          u: 'https://tommfr38.github.io/TIDG/',
-          i: 'fa-money-bill-1-wave',
-          d: 'My depression generator'
-        },
-        {
-          t: 'Discord Embed Editor',
-          u: 'https://tommfr38.github.io/discordembededitor',
-          i: 'fa-brands fa-discord',
-          d: 'Quick editor to build Discord embed messages without guessing JSON.'
-        },
-        {
-          t: 'Rock Paper Scissors',
-          u: 'https://tommfr38.github.io/rockpaperscissors',
-          i: 'fa-hand-rock',
-          d: 'Rock, paper, scissors game against a simple bot.'
-        },
-        {
-          t: 'Download More RAM',
-          u: 'https://tommfr38.github.io/downloadmoreram',
-          i: 'fa-memory',
-          d: 'Joke site pretending to let you “download” extra RAM.'
-        },
-        {
-          t: 'One Hour Progress Bar',
-          u: 'https://tommfr38.github.io/onehourprogressbar',
-          i: 'fa-spinner',
-          d: 'A progress bar that fills up over the course of one hour.'
-        },
-        {
-          t: 'OnlyCats404',
-          u: 'https://onlycats404.github.io/',
-          i: 'fa-cat',
-          d: 'Only Cats(NOT ADULT CONTENT!)'
-        },
-        {
-          t: 'WebGate',
-          u: 'https://tommfr38.github.io/WebGate/',
-          i: 'fa-door-open',
-          d: 'Open websites from a program'
-        },
-        {
-          t: 'True or Not?',
-          u: 'https://tommfr38.github.io/trueornot/',
-          i: 'fa-circle-question',
-          d: 'Enter a staterment to find out the truth'
-        },
-        {
-          t: 'IP Checker',
-          u: 'https://tommfr38.github.io/ipchecker/',
-          i: 'fa-network-wired',
-          d: 'Shows info about an IP address'
-        },
-        {
-          t: 'IP Lookup',
-          u: 'https://tommfr38.github.io/iplookup/',
-          i: 'fa-location-dot',
-          d: 'Shows your current IP address'
-        },
-        {
-          t: 'iOS 26 Beta Timeline',
-          u: 'https://tommfr38.github.io/ios26beta/',
-          i: 'fa-brands fa-apple',
-          d: 'Timeline page that tracks iOS 26 beta releases.'
-        },
-        {
-          t: 'Clan Tag Center',
-          u: 'https://clantagcenter.github.io/',
-          i: 'fa-tag',
-          d: 'Collection of clan tags for Discord'
-        },
-        {
-          t: 'Password Generator',
-          u: 'https://tommfr38.github.io/passwordgenerator/',
-          i: 'fa-key',
-          d: 'Generates random passwords with chosen length and options.'
-        },
-        {
-          t: 'Web TextEdit',
-          u: 'https://tommfr38.github.io/WebTextEdit/',
-          i: 'fa-file-pen',
-          d: 'Simple in-browser text editor for quick notes.'
-        },
-        {
-          t: 'Cursor Finder',
-          u: 'https://tommfr38.github.io/cursorfinder/',
-          i: 'fa-arrow-pointer',
-          d: 'Helps you find your cursor'
-        },
-        {
-          t: 'Dexter Ratings',
-          u: 'https://tommfr38.github.io/dexterratings/',
-          i: 'fa-syringe',
-          d: 'See the IMDB ratings of Dexter episodes'
-        },
-        {
-          t: 'Dexter OS Ratings',
-          u: 'https://tommfr38.github.io/dexterosrater/',
-          i: 'fa-syringe',
-          d: 'Shows the IMDB ratings of Dexter OS episodes'
-        },
-        {
-          t: 'BotSend',
-          u: 'https://tommfr38.github.io/botsend/',
-          i: 'fa-robot',
-          d: 'Send text messages with a discord bot easily!'
-        },
-        {
-          t: 'PassNote',
-          u: 'https://tommfr38.github.io/passnote/',
-          i: 'fa-lock',
-          d: 'Hide information unsecurely'
-        },
-        {
-          t: 'Magic 8 Ball',
-          u: 'https://tommfr38.github.io/magic8ball/',
-          i: 'fa-8',
-          d: 'Browser-based magic 8 ball that gives random answers to questions.'
-        },
-        {
-          t: 'GTA VI Countdown',
-          u: 'https://tommfr38.github.io/gta6/',
-          i: 'fa-solid fa-6',
-          d: 'Countdown to GTA VI(if it even releases)'
-        },
-      ];
-
-      const grid = document.getElementById('grid');
-      const tpl = document.getElementById('card-tpl');
-      const updated = document.getElementById('updated');
-
-      // Popup modals (Claudy!, MC MODS)
-      const modals = {
-        claudy: document.getElementById('claudy-modal'),
-        mcmod: document.getElementById('mcmod-modal'),
-      };
-
-      function openModal(key) {
-        const modal = modals[key];
-        if (modal) modal.hidden = false;
-      }
-      function closeModal(key) {
-        const modal = modals[key];
-        if (modal) modal.hidden = true;
-      }
-
-      Object.entries(modals).forEach(([key, modal]) => {
-        if (!modal) return;
-        modal.querySelector('[id$="-modal-close"]')?.addEventListener('click', () => closeModal(key));
-        modal.querySelector('[id$="-modal-backdrop"]')?.addEventListener('click', () => closeModal(key));
-      });
-
-      function makeCard(p) {
-        const node = tpl.content.firstElementChild.cloneNode(true);
-        const a = node.querySelector('a');
-        a.href = p.u;
-        a.title = p.t;
-
-        const icon = node.querySelector('[data-icon]');
-        if (p.iconText) {
-          icon.className = 'text-lg font-extrabold not-italic';
-          icon.textContent = p.iconText;
-        } else {
-          icon.className = `${p.i}`.includes('fa-brands') ? p.i : `fa-solid ${p.i}`;
-        }
-
-        node.querySelector('[data-title]').textContent = p.t;
-        const desc = node.querySelector('[data-desc]');
-        if (desc && p.d) desc.textContent = p.d;
-
-        if (p.popup) {
-          a.removeAttribute('target');
-          a.removeAttribute('rel');
-          a.addEventListener('click', (e) => {
-            e.preventDefault();
-            openModal(p.popup);
-          });
-        }
-
-        return node;
-      }
-
-      projects.forEach((p) => grid.appendChild(makeCard(p)));
-
-      const dateText = `Updated ${new Date().toLocaleDateString([], {
-        year: 'numeric',
-        month: 'short',
-        day: '2-digit',
-      })}`;
-      if (updated) updated.textContent = dateText;
-    </script>
+    <script src="/script.js"></script>
   </body>
 </html>

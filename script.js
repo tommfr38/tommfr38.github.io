@@ -4,6 +4,15 @@ const projects = [
   { t: 'NeverFap', c: 'tools', u: 'https://tommfr38.github.io/neverfap/', d: 'Stop gooning. Live healthier.' },
   { t: 'Relocate', c: 'tools', u: 'https://tommfr38.github.io/relocate/', d: "Change your phone's GPS location with ease." },
   {t: 'toexe', c: 'tools', slot: 6, u: 'https://tommfr38.com/toexe/', d: 'Turn a Mac .app into a Windows .exe (Electron and Java apps), from the terminal.' },
+  {
+    t: 'ezc',
+    c: 'tools',
+    d: 'Compile any folder of code into a Mac .app. Python, C, C++, Swift, Rust, C#, Go, Java and more.',
+    links: [
+      { t: 'install', u: 'https://tommfr38.com/ezcompiler/' },
+      { t: 'source', u: 'https://github.com/tommfr38/ezcompiler' },
+    ],
+  },
   { t: 'Cutout', c: 'tools', u: 'https://tommfr38.github.io/cutout/', d: 'Remove the background of any image.' },
   {
     t: 'card2.0',

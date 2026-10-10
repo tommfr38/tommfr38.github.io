@@ -1,6 +1,7 @@
 // c = category. Entries with `links` have several destinations instead of one `u`.
+// slot = pinned 0-based position in the list; enforced below, so adding or reordering entries never moves it.
 const projects = [
-  { t: 'toexe', c: 'tools', u: 'https://tommfr38.com/toexe/', d: 'Turn a Mac .app into a Windows .exe (Electron and Java apps), from the terminal.' },
+  { t: 'toexe', c: 'tools', slot: 6, u: 'https://tommfr38.com/toexe/', d: 'Turn a Mac .app into a Windows .exe (Electron and Java apps), from the terminal.' },
   { t: 'NeverFap', c: 'tools', u: 'https://tommfr38.github.io/neverfap/', d: 'Stop gooning. Live healthier.' },
   { t: 'Relocate', c: 'tools', u: 'https://tommfr38.github.io/relocate/', d: "Change your phone's GPS location with ease." },
   { t: 'Cutout', c: 'tools', u: 'https://tommfr38.github.io/cutout/', d: 'Remove the background of any image.' },
@@ -63,6 +64,12 @@ const projects = [
   { t: 'Magic 8 Ball', c: 'fun', u: 'https://tommfr38.github.io/magic8ball/', d: 'Browser-based magic 8 ball that gives random answers to questions.' },
   { t: 'GTA VI Countdown', c: 'info', u: 'https://tommfr38.github.io/gta6/', d: 'Countdown to GTA VI (if it even releases).' },
 ];
+
+// Pin entries with a `slot` to that exact position, wherever they sit in the array above
+for (const p of projects.filter((p) => p.slot !== undefined)) {
+  projects.splice(projects.indexOf(p), 1);
+  projects.splice(Math.min(p.slot, projects.length), 0, p);
+}
 
 const CATEGORIES = ['tools', 'games', 'discord', 'fun', 'info', 'mods'];
 

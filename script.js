@@ -1,9 +1,9 @@
 // c = category. Entries with `links` have several destinations instead of one `u`.
 // slot = pinned 0-based position in the list; enforced below, so adding or reordering entries never moves it.
 const projects = [
-  { t: 'toexe', c: 'tools', slot: 6, u: 'https://tommfr38.com/toexe/', d: 'Turn a Mac .app into a Windows .exe (Electron and Java apps), from the terminal.' },
   { t: 'NeverFap', c: 'tools', u: 'https://tommfr38.github.io/neverfap/', d: 'Stop gooning. Live healthier.' },
   { t: 'Relocate', c: 'tools', u: 'https://tommfr38.github.io/relocate/', d: "Change your phone's GPS location with ease." },
+  {t: 'toexe', c: 'tools', slot: 6, u: 'https://tommfr38.com/toexe/', d: 'Turn a Mac .app into a Windows .exe (Electron and Java apps), from the terminal.' },
   { t: 'Cutout', c: 'tools', u: 'https://tommfr38.github.io/cutout/', d: 'Remove the background of any image.' },
   {
     t: 'card2.0',

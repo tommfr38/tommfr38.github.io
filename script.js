@@ -29,7 +29,7 @@ const projects = [
     c: 'mods',
     d: 'My Minecraft mods. Twilight Forest Boss: all rights to @D_ANGRY_MODDER.',
     links: [
-      { t: 'zenith mod', u: 'https://github.com/tommfr38/ZenithMod/' },
+      { t: 'prism mod', u: 'https://github.com/tommfr38/PrismMod/' },
       { t: 'twilight forest boss', u: 'https://github.com/tommfr38/TwilightForestFinalBoss' },
     ],
   },
